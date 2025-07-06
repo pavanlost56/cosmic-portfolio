@@ -1,7 +1,7 @@
 export interface Skill {
   name: string;
   level: number;
-  category: 'Frontend' | 'Backend' | 'Databases' | 'Tools';
+  category: 'Frontend' | 'Backend' | 'Databases' | 'Tools' | 'ML/AI';
 }
 
 export interface Experience {
@@ -39,129 +39,143 @@ export const stats: StatItem[] = [
   },
   {
     label: "ML Projects",
-    value: "10+",
+    value: "2+",
     icon: "Briefcase"
   },
   {
     label: "Technologies",
-    value: "15+",
+    value: "20+",
     icon: "Code"
   },
   {
     label: "Available for Opportunities",
     value: "✅",
-    icon: "CheckCircle"
+    icon: "CircleCheckBig"
   }
 ];
 
 export const skills: Skill[] = [
   // Frontend
-  { name: "HTML", level: 85, category: "Frontend" },
-  { name: "CSS", level: 85, category: "Frontend" },
-  { name: "JavaScript", level: 90, category: "Frontend" },
-  { name: "React.js", level: 88, category: "Frontend" },
-  { name: "Next.js", level: 85, category: "Frontend" },
-  { name: "Tailwind CSS", level: 90, category: "Frontend" },
+  { name: "HTML", level: 90, category: "Frontend" },
+  { name: "CSS", level: 90, category: "Frontend" },
+  { name: "JavaScript", level: 92, category: "Frontend" },
+  { name: "TypeScript", level: 88, category: "Frontend" },
+  { name: "React.js", level: 90, category: "Frontend" },
+  { name: "Next.js", level: 88, category: "Frontend" },
+  { name: "Tailwind CSS", level: 92, category: "Frontend" },
   
   // Backend
-  { name: "Node.js", level: 85, category: "Backend" },
-  { name: "Python", level: 90, category: "Backend" },
-  { name: "Spring Boot", level: 80, category: "Backend" },
-  { name: "REST APIs", level: 85, category: "Backend" },
+  { name: "Python", level: 95, category: "Backend" },
+  { name: "Java", level: 85, category: "Backend" },
+  { name: "Go", level: 80, category: "Backend" },
+  { name: "Spring Boot", level: 82, category: "Backend" },
+  { name: "REST APIs", level: 88, category: "Backend" },
   
   // Databases
-  { name: "SQL", level: 85, category: "Databases" },
+  { name: "SQL", level: 88, category: "Databases" },
   { name: "MongoDB", level: 80, category: "Databases" },
-  { name: "ChromaDB", level: 75, category: "Databases" },
-  { name: "SQLite", level: 80, category: "Databases" },  // Tools
+  { name: "PostgreSQL", level: 82, category: "Databases" },
+  { name: "SQLite", level: 85, category: "Databases" },
+  
+  // ML/AI
+  { name: "NumPy", level: 92, category: "ML/AI" },
+  { name: "TensorFlow", level: 88, category: "ML/AI" },
+  { name: "PyTorch", level: 85, category: "ML/AI" },
+  { name: "Pandas", level: 90, category: "ML/AI" },
+  { name: "Matplotlib", level: 88, category: "ML/AI" },
+  { name: "Scikit-learn", level: 86, category: "ML/AI" },
+  
+  // Tools
   { name: "VS Code", level: 95, category: "Tools" },
-  { name: "GoLand IDE", level: 85, category: "Tools" },
-  { name: "Docker", level: 85, category: "Tools" },
-  { name: "Git/GitHub", level: 85, category: "Tools" },
-  { name: "npm", level: 88, category: "Tools" },
-  { name: "Vite", level: 82, category: "Tools" }
+  { name: "PyCharm", level: 90, category: "Tools" },
+  { name: "GoLand", level: 85, category: "Tools" },
+  { name: "IntelliJ IDEA", level: 88, category: "Tools" },
+  { name: "Docker", level: 82, category: "Tools" },
+  { name: "Git/GitHub", level: 90, category: "Tools" },
+  { name: "GitHub CLI", level: 85, category: "Tools" },
+  { name: "Codespaces", level: 80, category: "Tools" },
+  { name: "Postman", level: 88, category: "Tools" },
+  { name: "Render", level: 80, category: "Tools" }
 ];
 
 export const experience: Experience[] = [
   {
     title: "AI Developer Intern",
-    company: "VISWAM.AI – Summer of AI 2025",
-    duration: "May 2025 - June 2025",
+    company: "VISWAM.AI",
+    duration: "May 2025 - June 2025 (Hybrid)",
     description: [
-      "Selected for the prestigious Summer of AI internship organized by IIIT Hyderabad, Swecha, Meta, TASK & HYSEA",
-      "Gained hands-on experience in Python, AI engineering, DevOps, and collaborative software development",
-      "Worked on real-world AI models using local datasets and deployed them into production environments",
-      "Contributed to open-source AI projects and collaborated with a national cohort of developers and mentors"
+      "Fine-tuned ML models using Python for production-ready AI applications",
+      "Deployed models with open-source datasets and integrated DevOps practices",
+      "Collaborated cross-functionally to embed AI into systems"
     ]
   },
   {
     title: "Machine Learning Intern",
     company: "CodeAlpha",
-    duration: "October 2024 - November 2024",
+    duration: "October 2024 - November 2024 (Remote)",
     description: [
-      "Built a Credit Score Prediction system using supervised ML techniques",
-      "Applied data preprocessing, model evaluation, and Python-based libraries such as Pandas and Scikit-learn",
-      "Learned collaborative development with Git and remote team communication"
+      "Focused on model training and ML fundamentals using Python",
+      "Preprocessed data and contributed to version-controlled codebases"
     ]
   }
 ];
 
 export const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with payment integration, admin dashboard, and real-time inventory management.",
-    techStack: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Tailwind CSS"],
-    githubUrl: "https://github.com/ajmeerakumar/ecommerce-platform",
-    liveUrl: "https://demo-ecommerce.vercel.app"
+    title: "Credit Scoring Model",
+    description: "Machine learning model using logistic regression and decision trees to predict creditworthiness with high accuracy.",
+    techStack: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
+    githubUrl: "https://github.com/pavanlost56/credit-scoring-model"
   },
   {
-    title: "Task Management App",
-    description: "Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    techStack: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
-    githubUrl: "https://github.com/ajmeerakumar/task-manager"
+    title: "Emotion Recognition System",
+    description: "Deep learning system built with TensorFlow/Keras, trained on FER2013 dataset with data augmentation for real-time emotion detection.",
+    techStack: ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy"],
+    githubUrl: "https://github.com/pavanlost56/emotion-recognition"
   },
   {
-    title: "Weather Dashboard",
-    description: "Interactive weather dashboard with location-based forecasts, historical data visualization, and severe weather alerts.",
-    techStack: ["Vue.js", "Python", "FastAPI", "Chart.js", "TailwindCSS"],
-    githubUrl: "https://github.com/ajmeerakumar/weather-dashboard",
-    liveUrl: "https://weather-dash.netlify.app"
+    title: "Ad Blocker Extension",
+    description: "JavaScript-based browser extension using DOM manipulation and browser APIs to block intrusive advertisements.",
+    techStack: ["JavaScript", "HTML", "CSS", "Browser APIs", "Manifest V3"],
+    githubUrl: "https://github.com/pavanlost56/ad-blocker-extension"
   },
   {
-    title: "Personal Finance Tracker",
-    description: "Comprehensive personal finance management tool with expense tracking, budget planning, and financial goal setting.",
-    techStack: ["React Native", "Firebase", "Chart.js", "Redux"],
-    githubUrl: "https://github.com/ajmeerakumar/finance-tracker"
+    title: "Backend API Development",
+    description: "RESTful APIs built with Go and Python following microservices architecture with robust logging and testing.",
+    techStack: ["Go", "Python", "REST APIs", "Microservices", "Docker"],
+    githubUrl: "https://github.com/pavanlost56/backend-api-services"
   },
   {
-    title: "Blog Platform",
-    description: "Modern blog platform with markdown support, SEO optimization, and content management system for multiple authors.",
-    techStack: ["Gatsby", "GraphQL", "Contentful", "Netlify", "SCSS"],
-    githubUrl: "https://github.com/ajmeerakumar/blog-platform",
-    liveUrl: "https://techblog-demo.netlify.app"
+    title: "AI-Powered CLI - CodeInsight",
+    description: "AI-powered command-line interface designed for Warp terminal, using Go for frontend and Python for backend.",
+    techStack: ["Go", "Python", "CLI", "AI/ML", "Warp Terminal"],
+    githubUrl: "https://github.com/pavanlost56/codeinsight"
   },
   {
-    title: "Real Estate Portal",
-    description: "Property listing platform with advanced search filters, virtual tours, and integrated mortgage calculator.",
-    techStack: ["Angular", "Spring Boot", "MySQL", "AWS S3", "Bootstrap"],
-    githubUrl: "https://github.com/ajmeerakumar/real-estate-portal"
+    title: "Portfolio Website",
+    description: "Modern, responsive portfolio website built with Next.js and TypeScript, featuring smooth animations and dark theme.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    githubUrl: "https://github.com/pavanlost56/cosmic-portfolio",
+    liveUrl: "https://pavankumar-portfolio.vercel.app"
   }
 ];
 
 export const learning: LearningItem[] = [
-  { name: "GraphQL", progress: 75 },
-  { name: "Rust", progress: 45 },
-  { name: "Web3/Blockchain", progress: 60 },
-  { name: "Astro", progress: 70 },
-  { name: "Three.js", progress: 55 },
-  { name: "Machine Learning", progress: 40 },
-  { name: "Kubernetes", progress: 50 },
-  { name: "Go", progress: 35 }
+  { name: "Machine Learning", progress: 75 },
+  { name: "Deep Learning", progress: 60 },
+  { name: "Go", progress: 70 },
+  { name: "Cloud Computing (AWS)", progress: 55 },
+  { name: "DevOps", progress: 65 },
+  { name: "Kubernetes", progress: 45 },
+  { name: "GraphQL", progress: 50 },
+  { name: "System Design", progress: 60 }
 ];
 
 export const personalInfo = {
   name: "Ajmeera Pavan Kumar",
-  role: "Full Stack Developer & Problem Solver",  email: "pavankumar22119@gmail.com",
+  role: "AI/ML Developer | Backend Developer",
+  email: "pavankumar22119@gmail.com",
+  phone: "+91-9440926408",
   location: "Hyderabad, India",
   github: "https://github.com/pavanlost56",
   linkedin: "https://www.linkedin.com/in/pavan-kumar-ajmeera-8b3ba3318/",

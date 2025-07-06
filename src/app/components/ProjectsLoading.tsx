@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 export default function ProjectsLoading() {
   return (
     <section className="py-20 bg-white">

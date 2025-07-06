@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #0a0a0f;
   --foreground: #ffffff;
 }
 
@@ -21,6 +21,17 @@ html {
 ::selection {
   background: #ffffff;
   color: #000000;
+}
+
+/* Custom cursor styling - only on desktop */
+@media (pointer: fine) and (hover: hover) {
+  * {
+    cursor: none !important;
+  }
+
+  a, button, input, textarea, select, [role="button"] {
+    cursor: none !important;
+  }
 }
 
 /* Focus styles for accessibility */
@@ -219,6 +230,21 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Animated gradient border */
+@keyframes gradient-xy {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 200% 200%;
+  animation: gradient-xy 4s ease infinite;
 }
 
 /* Smooth page transitions */

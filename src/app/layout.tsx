@@ -5,6 +5,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import NavigationHeader from "./components/NavigationHeader";
 import ScrollProgress from "./components/ScrollProgress";
 import PageTransition from "./components/PageTransition";
+import CursorWrapper from "./components/ui/CursorWrapper";
+import MouseGlow from "./components/MouseGlow";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +46,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
         {/* <PageLoader /> Removed to avoid double loading and speed up initial load */}
+        <MouseGlow />
+        <CursorWrapper />
         <ScrollProgress />
         <NavigationHeader />
         <PageTransition>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface SectionRevealProps {
   children: React.ReactNode;
@@ -17,7 +17,14 @@ export default function SectionReveal({
   delay = 0,
   direction = 'up',
   staggerChildren = false
-}: SectionRevealProps) {  const ref = useRef(null);
+}: SectionRevealProps) {
+  const [mounted, setMounted] = useState(false);
+  const ref = useRef(null);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const isInView = useInView(ref, { 
     once: true, 
     margin: "-50px 0px -50px 0px",
@@ -65,8 +72,8 @@ export default function SectionReveal({
       transition: {
         duration: 0.6,
         delay: delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        when: "beforeChildren",
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
+        when: "beforeChildren" as const,
         staggerChildren: staggerChildren ? 0.15 : 0
       }
     }
@@ -79,10 +86,18 @@ export default function SectionReveal({
       scale: 1,
       transition: {
         duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: [0.25, 0.46, 0.45, 0.94] as const
       }
     }
   };
+
+  if (!mounted) {
+    return (
+      <div className={className} style={{ opacity: 0 }}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -91,13 +106,14 @@ export default function SectionReveal({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerChildren ? containerVariants : undefined}
-      style={{ transformStyle: 'preserve-3d' }}      {...(!staggerChildren && {
+      style={{ transformStyle: 'preserve-3d' }}
+      {...(!staggerChildren && {
         initial: getInitialState(),
         animate: isInView ? getAnimateState() : getInitialState(),
         transition: {
           duration: 0.6,
           delay: delay,
-          ease: [0.25, 0.46, 0.45, 0.94]
+          ease: [0.25, 0.46, 0.45, 0.94] as const
         }
       })}
     >
@@ -164,7 +180,7 @@ export function TextReveal({
       rotateX: 0,
       transition: {
         duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: [0.25, 0.46, 0.45, 0.94] as const
       }
     }
   };

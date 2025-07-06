@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
-import Hero from './components/Hero';
+import HeroSimplified from './components/HeroSimplified';
 import Stats from './components/Stats';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
+import TechStack from './components/TechStack';
 import Projects from './components/Projects';
 import ProjectsLoading from './components/ProjectsLoading';
-import Learning from './components/Learning';
-import ContactForm from './components/ContactForm';
+import Experience from './components/Experience';
+import LearningEnhanced from './components/LearningEnhanced';
+import GitHubBadges from './components/GitHubBadges';
+import ContactEnhanced from './components/ContactEnhanced';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import SectionReveal from './components/SectionReveal';
@@ -16,59 +17,50 @@ export default function Home() {
     <main className="relative">
       {/* Hero Section */}
       <section id="hero">
-        <Hero />
+        <HeroSimplified />
       </section>
       
       {/* Stats Section */}
-      <section id="about">
-        <SectionReveal direction="up" delay={0.1} staggerChildren={true}>
-          <Stats />
-        </SectionReveal>
+      <section id="stats">
+        <Stats />
       </section>
       
-      {/* Skills Section */}
-      <section id="skills">
-        <SectionReveal direction="scale" delay={0.2} staggerChildren={true}>
-          <Skills />
-        </SectionReveal>
-      </section>
-      
-      {/* Experience Section */}
-      <section id="experience">
-        <SectionReveal direction="left" delay={0.1}>
-          <Experience />
-        </SectionReveal>
+      {/* Tech Stack Section */}
+      <section id="techstack">
+        <TechStack />
       </section>
       
       {/* Projects Section with Suspense */}
       <section id="projects">
-        <SectionReveal direction="up" delay={0.2} staggerChildren={true}>
-          <ErrorBoundary>
-            <Suspense fallback={<ProjectsLoading />}>
-              <Projects />
-            </Suspense>
-          </ErrorBoundary>
-        </SectionReveal>
+        <ErrorBoundary>
+          <Suspense fallback={<ProjectsLoading />}>
+            <Projects />
+          </Suspense>
+        </ErrorBoundary>
+      </section>
+      
+      {/* Experience Section */}
+      <section id="experience">
+        <Experience />
       </section>
       
       {/* Learning Section */}
       <section id="learning">
-        <SectionReveal direction="right" delay={0.1}>
-          <Learning />
-        </SectionReveal>
+        <LearningEnhanced />
+      </section>
+      
+      {/* GitHub Badges Section */}
+      <section id="github-badges">
+        <GitHubBadges />
       </section>
       
       {/* Contact Section */}
       <section id="contact">
-        <SectionReveal direction="up" delay={0.2}>
-          <ContactForm />
-        </SectionReveal>
+        <ContactEnhanced />
       </section>
       
       {/* Footer */}
-      <SectionReveal direction="scale" delay={0.1}>
-        <Footer />
-      </SectionReveal>
+      <Footer />
     </main>
   );
 }

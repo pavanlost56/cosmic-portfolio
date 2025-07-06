@@ -1,0 +1,4 @@
+Ajmeera Pavan Kumar - Resume
+
+Please replace this with your actual resume PDF file.
+Place your resume.pdf file in the public folder.

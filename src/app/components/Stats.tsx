@@ -1,96 +1,91 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Clock, Briefcase, Code, CheckCircle } from 'lucide-react';
+import { Clock, Briefcase, Code, CircleCheckBig } from 'lucide-react';
 import { stats } from '@/lib/data';
 
 const iconMap = {
   Clock,
   Briefcase,
   Code,
-  CheckCircle,
+  CircleCheckBig,
 };
 
 export default function Stats() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-20 bg-[#0a0a0f] relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[128px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px]" />
+      </div>
+      
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {stats.map((stat, index) => {
             const IconComponent = stat.icon ? iconMap[stat.icon as keyof typeof iconMap] : null;
             
-            return (              <motion.div
+            return (
+              <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 50, scale: 0.8, rotateX: -15 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0, 
-                  scale: 1, 
-                  rotateX: 0 
-                }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.15,
+                  duration: 0.5, 
+                  delay: index * 0.1,
                   type: "spring",
                   stiffness: 100
                 }}
                 viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
-                }}
-                className="text-center p-8 bg-white border border-gray-200 hover:border-gray-400 transition-all duration-500 morphing-border ripple enhanced-hover group cursor-pointer"
-                style={{ transformStyle: 'preserve-3d' }}
+                className="group relative"
               >
-                {IconComponent && (
-                  <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
+                {/* Card glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/20 to-purple-600/0 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                
+                {/* Card */}
+                <div className="relative bg-gray-900/30 backdrop-blur-sm border border-gray-800 hover:border-purple-500/50 p-8 rounded-2xl transition-all duration-300 text-center hover:bg-gray-900/50">
+                  {IconComponent && (
+                    <motion.div
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block mb-4"
+                    >
+                      <div className="w-12 h-12 mx-auto flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg">
+                        <IconComponent className="w-6 h-6 text-purple-400" />
+                      </div>
+                    </motion.div>
+                  )}
+                  
+                  <motion.h3 
+                    className="text-3xl font-bold text-white mb-2"
+                    initial={{ scale: 0.5 }}
+                    whileInView={{ scale: 1 }}
                     transition={{ 
-                      delay: index * 0.15 + 0.3,
+                      delay: index * 0.1 + 0.2,
                       type: "spring",
                       stiffness: 200
                     }}
-                    whileHover={{ 
-                      rotate: 360,
-                      scale: 1.2
-                    }}
-                    className="inline-block"
                   >
-                    <IconComponent className="w-8 h-8 mx-auto mb-4 text-black neon-glow" />
-                  </motion.div>
-                )}
-                <motion.h3 
-                  className="text-3xl font-bold text-black mb-2 glitch-effect"
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ 
-                    delay: index * 0.15 + 0.5,
-                    type: "spring",
-                    stiffness: 200
-                  }}
-                >
-                  {stat.value}
-                </motion.h3>
-                <motion.p 
-                  className="text-gray-600 font-medium morphing-underline"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    delay: index * 0.15 + 0.7,
-                    duration: 0.6
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {stat.label}
-                </motion.p>
+                    {stat.value}
+                  </motion.h3>
+                  
+                  <p className="text-gray-400 font-medium">
+                    {stat.label}
+                  </p>
+                  
+                  {/* Bottom accent */}
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                  />
+                </div>
               </motion.div>
             );
           })}

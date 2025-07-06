@@ -182,9 +182,10 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 💬 Contact
 
 **Ajmeera Pavan Kumar**
-- Email: ajmeera.pavankumar@example.com
+- Email: pavankumar22119@gmail.com
+- Phone: +91-9440926408
 - GitHub: [@pavanlost56](https://github.com/pavanlost56)
-- LinkedIn: [pavan-kumar-ajmeera](https://linkedin.com/in/pavan-kumar-ajmeera-8b3ba3318)
+- LinkedIn: [pavan-kumar-ajmeera](https://www.linkedin.com/in/pavan-kumar-ajmeera-8b3ba3318/)
 
 ---
 
