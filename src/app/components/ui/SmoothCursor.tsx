@@ -16,9 +16,9 @@ interface SmoothCursorProps {
 }
 
 const defaultSpringConfig: SpringConfig = {
-  damping: 45,
-  stiffness: 400,
-  mass: 1,
+  damping: 35,
+  stiffness: 350,
+  mass: 0.8,
   restDelta: 0.001,
 };
 
@@ -62,6 +62,10 @@ export function SmoothCursor({
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
   
+  // Scale animation for hover effects
+  const scale = useMotionValue(1);
+  const springScale = useSpring(scale, { ...springConfig, stiffness: 500 });
+  
   // Rotation based on movement
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -95,6 +99,7 @@ export function SmoothCursor({
       );
       
       setIsPointer(isInteractive);
+      scale.set(isInteractive ? 0.8 : 1);
     };
 
     const handleMouseLeave = () => {
@@ -126,7 +131,7 @@ export function SmoothCursor({
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [mouseX, mouseY, rotateX, rotateY, springX, springY]);
+  }, [mouseX, mouseY, rotateX, rotateY, springX, springY, scale]);
 
   return (
     <motion.div
@@ -142,16 +147,32 @@ export function SmoothCursor({
       }}
     >
       <motion.div
-        animate={{
-          scale: isPointer ? 1.5 : 1,
+        style={{
+          scale: springScale,
         }}
-        transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 20,
-        }}
+        className="relative"
       >
         {cursor}
+        
+        {/* Trailing effect */}
+        <motion.div
+          className="absolute inset-0 -z-10"
+          style={{
+            scale: 1.2,
+            opacity: 0.3,
+          }}
+          animate={{
+            scale: isPointer ? 1.5 : 1.2,
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 200,
+            damping: 25,
+            delay: 0.05,
+          }}
+        >
+          {cursor}
+        </motion.div>
       </motion.div>
     </motion.div>
   );
