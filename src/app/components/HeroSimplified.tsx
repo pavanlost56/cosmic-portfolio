@@ -293,7 +293,7 @@ export default function HeroSimplified() {
             >
               {/* Resume Preview Button */}
               <motion.a
-                href="/resume.pdf"
+                href="/Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all"
@@ -307,7 +307,7 @@ export default function HeroSimplified() {
 
               {/* Download Resume Button */}
               <motion.a
-                href="/resume.pdf"
+                href="/Resume.pdf"
                 download="Ajmeera_Pavan_Kumar_Resume.pdf"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-purple-500/50 text-purple-400 rounded-full font-medium hover:bg-purple-500/10 transition-all"
                 whileHover={{ scale: 1.05 }}
