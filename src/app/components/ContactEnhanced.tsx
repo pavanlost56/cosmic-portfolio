@@ -7,10 +7,7 @@ import {
   Phone, 
   MapPin, 
   Github, 
-  Linkedin, 
-  Twitter,
-  Instagram,
-  Globe,
+  Linkedin,
   Send,
   MessageSquare,
   Clock,
@@ -117,7 +114,7 @@ export default function ContactEnhanced() {
             whileHover={{ scale: 1.05 }}
           >
             <MessageSquare className="w-4 h-4 text-purple-400" />
-            <span className="text-purple-400 text-sm font-medium">Let's Connect</span>
+            <span className="text-purple-400 text-sm font-medium">Let&apos;s Connect</span>
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

@@ -1,9 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, Star, GitBranch, Trophy, Target, Zap, Users, Code2, Snowflake, ShieldCheck, Timer, Sparkles } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import { Award, Star, GitBranch, Zap, Users, Code2, Snowflake, ShieldCheck, Timer, Sparkles } from 'lucide-react';
 
 const badges = [
   {
