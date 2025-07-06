@@ -1,63 +1,52 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, Star, GitBranch, Zap, Users, Code2, Snowflake, ShieldCheck, Timer, Sparkles } from 'lucide-react';
+import { Award, Star, GitBranch, Zap, Users, Code2 } from 'lucide-react';
+import Image from 'next/image';
 
 const badges = [
   {
     name: 'Arctic Code Vault Contributor',
     description: 'Contributed code to the 2020 Arctic Code Vault',
+    image: '/badges/arctic-code-vault.png',
     year: '2020',
     color: 'from-blue-400 to-cyan-400',
-    bgGradient: 'from-blue-500/20 to-cyan-500/20',
     animation: 'float',
-    icon: Snowflake,
-    iconColor: 'text-cyan-400',
   },
   {
     name: 'Pull Shark',
     description: 'Opened pull requests that have been merged',
+    image: '/badges/pull-shark.png',
     color: 'from-purple-400 to-pink-400',
-    bgGradient: 'from-purple-500/20 to-pink-500/20',
     animation: 'swim',
-    icon: GitBranch,
-    iconColor: 'text-purple-400',
   },
   {
     name: 'Quickdraw',
     description: 'Gitty up! Closed an issue or pull request within 5 minutes',
+    image: '/badges/quickdraw.png',
     color: 'from-yellow-400 to-orange-400',
-    bgGradient: 'from-yellow-500/20 to-orange-500/20',
     animation: 'pulse',
-    icon: Timer,
-    iconColor: 'text-yellow-400',
   },
   {
     name: 'YOLO',
     description: 'Merged a pull request without code review',
+    image: '/badges/yolo.png',
     color: 'from-red-400 to-pink-400',
-    bgGradient: 'from-red-500/20 to-pink-500/20',
     animation: 'spin',
-    icon: ShieldCheck,
-    iconColor: 'text-red-400',
   },
   {
     name: 'Pair Extraordinaire',
     description: 'Coauthored commits on merged pull requests',
+    image: '/badges/pair-extraordinaire.png',
     color: 'from-green-400 to-teal-400',
-    bgGradient: 'from-green-500/20 to-teal-500/20',
     animation: 'bounce',
-    icon: Users,
-    iconColor: 'text-green-400',
   },
   {
     name: 'Starstruck',
     description: 'Created a repository that has 16 or more stars',
+    image: '/badges/starstruck.png',
     color: 'from-amber-400 to-yellow-400',
-    bgGradient: 'from-amber-500/20 to-yellow-500/20',
     animation: 'sparkle',
-    icon: Sparkles,
-    iconColor: 'text-amber-400',
   },
 ];
 
@@ -71,18 +60,16 @@ const achievements = [
 
 // Badge Display Component
 function BadgeDisplay({ badge }: { badge: typeof badges[0] }) {
-  const Icon = badge.icon;
   return (
-    <div className="relative w-20 h-20">
-      {/* Background gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${badge.bgGradient} rounded-2xl blur-sm`} />
-      
-      {/* Main badge container */}
-      <div className={`relative w-full h-full bg-gradient-to-br ${badge.color} p-[2px] rounded-2xl shadow-lg`}>
-        <div className="w-full h-full bg-gray-900 rounded-2xl flex items-center justify-center">
-          <Icon className={`w-10 h-10 ${badge.iconColor}`} />
-        </div>
-      </div>
+    <div className="relative w-24 h-24">
+      <Image
+        src={badge.image}
+        alt={badge.name}
+        width={96}
+        height={96}
+        className="object-contain"
+        priority
+      />
     </div>
   );
 }
