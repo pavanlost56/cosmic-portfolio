@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { SmoothCursor } from './SmoothCursor';
-import { FluidCursorDesign } from './FluidCursor';
 
 export default function CursorWrapper() {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -26,5 +25,5 @@ export default function CursorWrapper() {
 
   if (!isDesktop) return null;
 
-  return <SmoothCursor cursor={<FluidCursorDesign />} />;
+  return <SmoothCursor />;
 }

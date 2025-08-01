@@ -180,7 +180,32 @@ export default function LearningEnhanced() {
                   {/* Card */}
                   <motion.div 
                     className="relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-purple-500/50 p-6 rounded-2xl transition-all duration-300 cursor-pointer h-full"
-                    whileHover={{ y: -5 }}
+                    whileHover={{ 
+                      y: -8,
+                      rotateY: 5,
+                      rotateX: 5,
+                      scale: 1.02,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20
+                      }
+                    }}
+                    animate={{
+                      y: [0, -2, 0],
+                    }}
+                    transition={{
+                      y: {
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.2
+                      }
+                    }}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      perspective: "1000px"
+                    }}
                   >
                     {/* Status badge */}
                     <div className="absolute top-2 right-2">
@@ -195,26 +220,42 @@ export default function LearningEnhanced() {
                       />
                     </div>
 
-                    {/* Icon */}
+                    {/* Icon with dock-style animation */}
                     <motion.div
                       className="relative mb-4"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 200 }}
+                      whileHover={{ 
+                        scale: 1.2, 
+                        rotate: [0, -5, 5, 0],
+                        y: -5
+                      }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 400,
+                        damping: 15
+                      }}
                     >
-                      <div className="w-14 h-14 mx-auto flex items-center justify-center bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl relative overflow-hidden">
+                      <div className="w-14 h-14 mx-auto flex items-center justify-center bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl relative overflow-hidden border border-gray-700/50">
                         <IconComponent className={`w-7 h-7 ${
                           hoveredIndex === index ? 'text-purple-400' : 'text-gray-400'
-                        } relative z-10 transition-colors`} />
+                        } relative z-10 transition-colors duration-300`} />
+                        
+                        {/* Dock-style background glow */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-blue-500/20 to-cyan-500/20 opacity-0"
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
                         
                         {/* Icon shimmer effect */}
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                           animate={{ x: [-50, 50] }}
                           transition={{ 
-                            duration: 2,
+                            duration: 3,
                             repeat: Infinity,
                             repeatType: "loop",
-                            ease: "linear"
+                            ease: "linear",
+                            delay: index * 0.5
                           }}
                         />
                       </div>
@@ -227,56 +268,92 @@ export default function LearningEnhanced() {
                       {item.name}
                     </h3>
 
-                    {/* Skill level */}
-                    <p className="text-xs text-center text-gray-500 mb-4 capitalize">
-                      {skillLevel} Level
-                    </p>
+                    {/* Skill level badge */}
+                    <div className="flex justify-center mb-4">
+                      <motion.div
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          skillLevel === 'advanced' 
+                            ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
+                          skillLevel === 'intermediate' 
+                            ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
+                            'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        {skillLevel.charAt(0).toUpperCase() + skillLevel.slice(1)} Level
+                      </motion.div>
+                    </div>
                     
-                    {/* Progress */}
-                    <div className="space-y-2">
-                      <div className="flex items-center text-xs">
+                    {/* Learning status dock */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-center text-xs">
                         <span className="text-gray-500 flex items-center gap-1">
                           <Clock className="w-3 h-3" />
-                          Learning Progress
+                          Currently Learning
                         </span>
                       </div>
                       
-                      {/* Progress bar without percentage */}
-                      <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
+                      {/* Animated status dock */}
+                      <div className="flex justify-center">
                         <motion.div
-                          className={`absolute inset-y-0 left-0 rounded-full ${
-                            progressPercentage > 70 ? 'bg-gradient-to-r from-green-500 to-emerald-500' :
-                            progressPercentage > 40 ? 'bg-gradient-to-r from-yellow-500 to-orange-500' :
-                            'bg-gradient-to-r from-blue-500 to-purple-500'
-                          }`}
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${progressPercentage}%` }}
-                          transition={{ 
-                            duration: 1.5, 
-                            delay: index * 0.1,
-                            ease: "easeOut"
-                          }}
-                          viewport={{ once: true }}
+                          className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-700/50"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          transition={{ type: "spring", stiffness: 300 }}
                         >
-                          {/* Progress bar shimmer */}
+                          {/* Learning indicators */}
                           <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                            animate={{ x: [-100, 200] }}
+                            className={`w-2 h-2 rounded-full ${
+                              progressPercentage > 70 ? 'bg-green-400' :
+                              progressPercentage > 40 ? 'bg-yellow-400' :
+                              'bg-blue-400'
+                            }`}
+                            animate={{ 
+                              scale: [1, 1.3, 1],
+                              opacity: [0.7, 1, 0.7]
+                            }}
                             transition={{ 
-                              duration: 2,
+                              duration: 2, 
                               repeat: Infinity,
-                              repeatType: "loop",
-                              delay: index * 0.1
+                              delay: index * 0.2
+                            }}
+                          />
+                          <span className="text-xs text-gray-400">Active</span>
+                          <motion.div
+                            className="w-1 h-1 bg-gray-500 rounded-full"
+                            animate={{ opacity: [0.3, 1, 0.3] }}
+                            transition={{ 
+                              duration: 1.5, 
+                              repeat: Infinity,
+                              delay: index * 0.3
                             }}
                           />
                         </motion.div>
                       </div>
                     </div>
 
-                    {/* Learning streak */}
-                    <div className="mt-4 flex justify-center items-center gap-2 text-xs text-gray-500">
-                      <TrendingUp className="w-3 h-3" />
-                      <span>Active learning</span>
+                    {/* Learning streak badge */}
+                    <div className="mt-4 flex justify-center">
+                      <motion.div
+                        className="flex items-center gap-2 text-xs bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-full px-3 py-1"
+                        whileHover={{ 
+                          scale: 1.05,
+                          backgroundColor: 'rgba(147, 51, 234, 0.15)'
+                        }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ 
+                            duration: 4, 
+                            repeat: Infinity, 
+                            ease: "linear" 
+                          }}
+                        >
+                          <TrendingUp className="w-3 h-3" />
+                        </motion.div>
+                        <span>Learning Streak</span>
+                      </motion.div>
                     </div>
                     
                     {/* Hover indicator */}

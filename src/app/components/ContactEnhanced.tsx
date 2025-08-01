@@ -60,6 +60,14 @@ export default function ContactEnhanced() {
       username: 'pavankumar22119@gmail.com',
       color: 'hover:text-red-400 hover:border-red-400',
       bgColor: 'hover:bg-red-400/10'
+    },
+    {
+      name: 'WhatsApp',
+      icon: MessageSquare, // Placeholder for WhatsApp
+      url: 'https://wa.me/919440926408',
+      username: '+91-9440926408',
+      color: 'hover:text-green-400 hover:border-green-400',
+      bgColor: 'hover:bg-green-400/10'
     }
   ];
 

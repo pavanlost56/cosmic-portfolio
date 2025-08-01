@@ -1919,3 +1919,18 @@ html {
   transform: translateX(1px);
   filter: sepia(1) hue-rotate(300deg) saturate(2);
 }
+
+/* Hide any percentage displays */
+[data-percentage]::after,
+.percentage-display,
+*[class*="percent"]::after,
+*[class*="progress-text"],
+*:contains("%") {
+  display: none !important;
+}
+
+/* Hide potential floating percentage indicators */
+.floating-percentage,
+*[style*="position: fixed"]:contains("%") {
+  display: none !important;
+}

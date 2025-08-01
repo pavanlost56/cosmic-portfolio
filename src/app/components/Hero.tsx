@@ -85,7 +85,7 @@ export default function Hero() {
               <div className="w-full h-full bg-[#0a0a0f] rounded-full overflow-hidden relative z-10">
                 <div className="relative w-full h-full">
                   <Image
-                    src="/profile.jpg"
+                    src="/profile.jpg?v=2"
                     alt={personalInfo.name}
                     fill
                     sizes="(max-width: 768px) 144px, (max-width: 1024px) 176px, 192px"

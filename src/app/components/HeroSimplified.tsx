@@ -1,14 +1,21 @@
 'use client';
 
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { personalInfo } from '@/lib/data';
-import { useMemo, useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Volume2, VolumeX, FileText, Download, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HeroSimplified() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentNameIndex, setCurrentNameIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check mobile device
+  useEffect(() => {
+    // Check if mobile
+    setIsMobile(window.innerWidth < 640);
+  }, []);
   
   // Personal details - Update these with your actual information
   const personalDetails = {
@@ -357,7 +364,7 @@ export default function HeroSimplified() {
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                   
                   <Image
-                    src="/profile.jpg"
+                    src="/profile.jpg?v=2"
                     alt={personalInfo.name}
                     fill
                     sizes="(max-width: 768px) 208px, (max-width: 1024px) 256px, 288px"
